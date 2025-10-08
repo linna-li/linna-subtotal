@@ -1,48 +1,78 @@
-# The name of this view in Looker is "Sales Data"
 view: sales_data {
-  # The sql_table_name parameter indicates the underlying database table
-  # to be used for all fields in this view.
-  sql_table_name: `testsubtoal.sales_data` ;;
-  drill_fields: [id]
+  sql_table_name: `testsubtoal.sales_data_enhanced` ;;
 
-  # This primary key is the unique key for this table in the underlying database.
-  # You need to define a primary key in a view in order to join to other views.
 
   dimension: id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
   }
-    # Here's what a typical dimension looks like in LookML.
-    # A dimension is a groupable field that can be used to filter query results.
-    # This dimension will be called "Asset Class" in Explore.
 
   dimension: asset_class {
     type: string
+    label: "Asset Class"
     sql: ${TABLE}.asset_class ;;
-  }
-
-  dimension: date {
-    type: string
-    sql: ${TABLE}.Date ;;
-  }
-
-  dimension: sale {
-    type: number
-    sql: ${TABLE}.sale ;;
   }
 
   dimension: scheme_type {
     type: string
+    label: "Scheme Type"
     sql: ${TABLE}.scheme_type ;;
   }
-  measure: count {
-    type: count
-    drill_fields: [id]
+
+  dimension: date {
+    type: string
+    label: "Date (MM-DD)"
+    sql: ${TABLE}.Date ;;
   }
 
-  measure: salecount {
+  dimension: scorecard_rm_zone {
+    type: string
+    label: "Scorecard RM Zone"
+    sql: ${TABLE}.scorecard_rm_zone ;;
+  }
+
+  dimension: scorecard_rm_replan {
+    type: string
+    label: "Scorecard RM Replan"
+    sql: ${TABLE}.scorecard_rm_replan ;;
+  }
+
+  dimension: scorecard_rm_cluster_sales {
+    type: string
+    label: "Scorecard RM Cluster Sales"
+    sql: ${TABLE}.scorecard_rm_cluster_sales ;;
+  }
+
+  dimension: scorecard_rm_location {
+    type: string
+    label: "Scorecard RM Location"
+    sql: ${TABLE}.scorecard_rm_location ;;
+  }
+
+  dimension: scorecard_rm_type_data {
+    type: string
+    label: "Scorecard RM Type Data"
+    sql: ${TABLE}.scorecard_rm_type_data ;;
+  }
+
+
+  measure: total_sales {
     type: sum
-    sql: ${sale} ;;
+    label: "Total Sales"
+    sql: ${TABLE}.sale ;;
+    value_format_name: decimal_0 #
+  }
+
+  measure: max_sales {
+    type: max
+    label: "MAX Sales"
+    sql: ${TABLE}.sale ;;
+    value_format_name: decimal_0 #
+  }
+
+  measure: count {
+    type: count
+    label: "Count of Rows"
   }
 }
