@@ -46,7 +46,7 @@ view: Location {
 
   dimension: scorecard_rm_location {
     type: string
-    label: "Location #"
+    label: "TEST-Location #"
     sql: ${TABLE}.scorecard_rm_location ;;
   }
 
