@@ -46,7 +46,7 @@ view: sales_data {
 
   dimension: scorecard_rm_location {
     type: string
-    label: "Scorecard RM Location"
+    label: "Location"
     sql: ${TABLE}.scorecard_rm_location ;;
   }
 
