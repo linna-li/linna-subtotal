@@ -1,4 +1,4 @@
-view: sales_data {
+view: Location {
   sql_table_name: `testsubtoal.sales_data_enhanced` ;;
 
 
@@ -46,7 +46,7 @@ view: sales_data {
 
   dimension: scorecard_rm_location {
     type: string
-    label: "Location-test"
+    label: "Location #"
     sql: ${TABLE}.scorecard_rm_location ;;
   }
 
