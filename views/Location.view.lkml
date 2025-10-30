@@ -46,7 +46,19 @@ view: Location {
 
   dimension: scorecard_rm_location {
     type: string
-    label: "TEST-Location #"
+    label: "location"
+    sql: ${TABLE}.scorecard_rm_location ;;
+  }
+
+  dimension: scorecard_rm_location_broken {
+    type: string
+    label: "Location"
+    sql: ${TABLE}.scorecard_rm_location ;;
+  }
+
+  dimension: scorecard_rm_location_broken_2 {
+    type: string
+    label: "Location #"
     sql: ${TABLE}.scorecard_rm_location ;;
   }
 
